@@ -23,6 +23,8 @@ Masking sensitive data
 Airflow will by default mask Connection passwords and sensitive Variables and keys from a Connection's
 extra (JSON) field when they appear in Task logs, in the Variable and in the Rendered fields views of the UI.
 
+Note: All the users who is having access to the Variables functionality would still be able to view the masked secretes in clear text format by accessing the API. The API endpoint to list the masked variable value in clear text format is /api/v1/variables?limit=100.
+
 It does this by looking for the specific *value* appearing anywhere in your output. This means that if you
 have a connection with a password of ``a``, then every instance of the letter a in your logs will be replaced
 with ``***``.
